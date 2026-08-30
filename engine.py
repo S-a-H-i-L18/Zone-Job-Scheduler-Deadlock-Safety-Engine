@@ -15,6 +15,7 @@ This file implements the Part 1 operating-system concepts:
 from jobs import JOBS
 import threading
 import time
+import random
 
 # ============================================================
 # HELPER FUNCTIONS
@@ -521,12 +522,12 @@ def run_unsynchronized_demo():
 
     def subtract_credits():
         value = counter[0]
-        time.sleep(0.01)
+        time.sleep(random.uniform(0.001,0.02))
         counter[0] = value - 40
 
     def add_reimbursement():
         value = counter[0]
-        time.sleep(0.01)
+        time.sleep(random.uniform(0.001,0.02))
         counter[0] = value + 25
 
     thread1 = threading.Thread(
@@ -827,7 +828,9 @@ def translate_segmented_address(segment, offset):
 
 def main():
 
+    # ============================================================
     # Task 2: Compare scheduling algorithms.
+    # ============================================================
 
     fcfs_results = fcfs(JOBS)
     print_schedule_results(
